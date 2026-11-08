@@ -1,5 +1,7 @@
 import { AdminNotification, AdminStats, ContactMessage, Donation, GalleryItem, Member, NewsEvent } from '../types.ts';
 import { supabase } from '../db/supabaseClient.ts';
+import { firebaseDb } from '../db/firebaseClient.ts';
+import { doc, setDoc, collection, addDoc } from 'firebase/firestore';
 
 const TOKEN_KEY = 'lda_admin_session_token';
 const LOCAL_MEMBERS_KEY = 'lda_local_registered_members';
@@ -138,6 +140,16 @@ export const apiService = {
         console.warn('Supabase direct insert warning:', sbErr);
       }
 
+      // Save directly to Firebase Firestore (labasuna-fe053)
+      try {
+        await setDoc(doc(firebaseDb, 'members', registrationId), {
+          ...newMember,
+          syncedAt: new Date().toISOString(),
+        });
+      } catch (fbErr) {
+        console.warn('Firebase Firestore member sync:', fbErr);
+      }
+
       return {
         success: true,
         message: 'Registration successful! Your application has been logged into the LDA system.',
@@ -232,6 +244,12 @@ export const apiService = {
         mobile: payload.mobile,
         subject: payload.subject,
         message: payload.message,
+      });
+    } catch {}
+    try {
+      await addDoc(collection(firebaseDb, 'contact_messages'), {
+        ...payload,
+        createdAt: new Date().toISOString(),
       });
     } catch {}
     saveStoredItem(LOCAL_CONTACTS_KEY, payload);
@@ -617,6 +635,13 @@ export const apiService = {
         transaction_utr: donation.transactionUtr,
         payment_status: donation.paymentStatus,
         receipt_number: donation.receiptNumber,
+      });
+    } catch {}
+
+    try {
+      await setDoc(doc(firebaseDb, 'donations', donation.donationId), {
+        ...donation,
+        syncedAt: new Date().toISOString(),
       });
     } catch {}
 
