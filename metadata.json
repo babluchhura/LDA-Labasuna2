@@ -1,0 +1,8 @@
+{
+  "name": "LDA - Liberal Democratic Association",
+  "description": "Official portal of LDA (Laba Suna Organisation), founded by Advocate & Social Worker Laba Suna in Lathore, Odisha. Dedicated to social welfare, community development, and member registrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

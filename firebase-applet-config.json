@@ -1,0 +1,34 @@
+{
+  "projectId": "elemental-charmer-7w1rw",
+  "appId": "1:738419822510:web:f8ed048a231ef63aee423f",
+  "apiKey": "AIzaSyAzOMEqThOniFdh-nauYCHadXSeOOW-LlA",
+  "authDomain": "elemental-charmer-7w1rw.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-ldacommunityport-3572a5e9-aa1c-4810-a9ee-2e95f22a5267",
+  "storageBucket": "elemental-charmer-7w1rw.firebasestorage.app",
+  "messagingSenderId": "738419822510",
+  "measurementId": "",
+  "oAuthClientId": "738419822510-qtrfmoq5t7or40b7m3f42afa15p72n4k.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}
+
+
+
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAzOuD74bR0dJA-zVhUF27kdjlPPTsgdfg",
+  authDomain: "labasuna-fe053.firebaseapp.com",
+  projectId: "labasuna-fe053",
+  storageBucket: "labasuna-fe053.firebasestorage.app",
+  messagingSenderId: "266131713864",
+  appId: "1:266131713864:web:4615d22b4aa314a2e2cd7d"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
